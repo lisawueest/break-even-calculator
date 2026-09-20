@@ -52,6 +52,3 @@ Danach kann die API im Browser geöffnet und getestet werden:
 
 `http://127.0.0.1:8000/`
 
-Falls die Swagger-Dokumentation unter dem Standardpfad konfiguriert ist:
-
-`http://127.0.0.1:8000/docs`
