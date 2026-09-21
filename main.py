@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from fastapi import FastAPI, HTTPException #falls die Eingabe ungültig sein sollte
+from fastapi import HTTPException #falls die Eingabe ungültig sein sollte
 from break_even import deckungsbeitrag
 from break_even import break_even
 
