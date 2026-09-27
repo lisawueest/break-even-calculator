@@ -74,16 +74,11 @@ button {
     align-items: center;
 }
 
-.display p {
+.display h2 {
+    font-size: 14px;
     margin: 0;
-    font-size: 12px;
-    font-weight: normal;
 }
 
 .display strong {
-    font-size: 14px;
-}
-
-.display h2 {
     font-size: 14px;
 }
