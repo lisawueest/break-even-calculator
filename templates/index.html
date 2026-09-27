@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Break-Even Calculator</title>
+    <link rel="stylesheet" href="/static/style.css"
+</head>
+<body>
+    <div class="calculator">
+        <h1>Break-Even Calculator</h1>
+        <p class="subtitle">Berechne den Break-Even-Point deines Produkts.</p>
+    
+        <label for="verkaufspreis">Verkaufspreis pro Stück</label>
+        <input type="number" id="verkaufspreis" placeholder="CHF">
+    
+        <label for="variable_kosten">Variable Kosten pro Stück</label>
+        <input type="number" id="variable_kosten" placeholder="CHF">
+    
+        <label for="fixkosten">Fixkosten</label>
+        <input type="number" id="fixkosten" placeholder="CHF">
+    
+        <button id="berechnen">Berechnen</button>
+
+        <div class ="ergebnis">
+            <p>Deckungsbeitrag pro Stück: <span id="deckungsbeitrag"></span></p>
+        </div>
+
+        <div class="display">
+            <h2>Break-Even Menge</h2>
+            <strong><span id="break_even"></span> Stück</strong>
+        </div>
+    </div>
+<script>
+    const button = document.getElementById("berechnen");
+    button.addEventListener("click", async function(){
+        const verkaufspreis = document.getElementById("verkaufspreis").value;
+        const variable_kosten = document.getElementById("variable_kosten").value;
+        const fixkosten = document.getElementById("fixkosten").value;
+        const response = await fetch("/break-even", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                verkaufspreis: Number(verkaufspreis),
+                variable_kosten: Number(variable_kosten),
+                fixkosten: Number(fixkosten)
+            })
+        })
+        const data = await response.json();
+        document.getElementById("deckungsbeitrag").textContent = data.deckungsbeitrag;
+        document.getElementById("break_even").textContent = data.break_even;
+    });
+</script>
+</body>
+
+
+</html>

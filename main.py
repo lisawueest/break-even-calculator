@@ -3,8 +3,15 @@ from pydantic import BaseModel
 from fastapi import HTTPException #falls die Eingabe ungültig sein sollte
 from break_even import deckungsbeitrag
 from break_even import break_even
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
 
 app = FastAPI(title="break_even_calculator")
+app.mount("/static", StaticFiles(directory="static"), name="static")
+@app.get("/")
+async def startseite():
+    return FileResponse("templates/index.html")
 
 class BreakEvenInput(BaseModel):
     verkaufspreis: float
