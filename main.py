@@ -9,9 +9,6 @@ from fastapi.staticfiles import StaticFiles
 
 app = FastAPI(title="break_even_calculator")
 app.mount("/static", StaticFiles(directory="static"), name="static")
-@app.get("/")
-async def startseite():
-    return FileResponse("templates/index.html")
 
 class BreakEvenInput(BaseModel):
     verkaufspreis: float
